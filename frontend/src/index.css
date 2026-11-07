@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global styles ──────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+/* ── Glass effect ───────────────────────────────────────────── */
+@layer components {
+  .glass {
+    @apply bg-surface-900/95 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-surface-800/85 backdrop-blur-lg border border-white/10 rounded-2xl;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    @apply bg-surface-800/95 border-white/20;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px -15px rgba(99, 102, 241, 0.25);
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold
+           py-3 px-6 rounded-xl transition-all duration-300
+           hover:from-brand-500 hover:to-brand-400 hover:shadow-lg hover:shadow-brand-500/25
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white/10 text-white font-semibold py-3 px-6 rounded-xl
+           border border-white/20 transition-all duration-300
+           hover:bg-white/20 hover:border-white/30 active:scale-95;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent-500 to-accent-400 text-surface-900 font-bold
+           py-3 px-6 rounded-xl transition-all duration-300
+           hover:from-accent-400 hover:to-accent-500 hover:shadow-lg hover:shadow-accent-500/25
+           active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3
+           text-white placeholder-gray-400 focus:outline-none focus:border-brand-500
+           focus:ring-2 focus:ring-brand-500/20 transition-all duration-300;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold bg-gradient-to-r from-white to-gray-300
+           bg-clip-text text-transparent;
+  }
+}
+
+/* ── Gradient text ──────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Shimmer loading ────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 2000px 100%;
+  animation: shimmer 2s infinite;
+}
